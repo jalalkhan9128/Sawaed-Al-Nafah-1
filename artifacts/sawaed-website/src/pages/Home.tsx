@@ -509,7 +509,21 @@ export default function Home() {
               <img src={companyLogo} alt="Sawaed Al-Nafah Logo" className="h-12 w-auto brightness-0 invert opacity-80" />
               <p>&copy; {new Date().getFullYear()} Sawaed Al-Nafah. All rights reserved.</p>
             </div>
-            <p>www.sawaedalnafah.com</p>
+            <div className="flex flex-col items-end gap-1">
+              <p>www.sawaedalnafah.com</p>
+              <p className="text-gray-500 text-xs">
+                Developed by{" "}
+                <a
+                  href="https://wa.me/923349128472"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-primary transition-colors"
+                  data-testid="link-developer"
+                >
+                  Muhammad Jalal
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
