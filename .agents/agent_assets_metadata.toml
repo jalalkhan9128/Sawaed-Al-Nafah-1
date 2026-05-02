@@ -1,0 +1,44 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "kLwEs8V7yefCUXYtmOEt3"
+uri = "file://artifacts/sawaed-website/src/assets/images/transport.jpg"
+type = "image"
+title = "fleet of clean industrial transport vehicles, buses and vans parked in a row, desert background"
+
+[[outputs]]
+id = "Fvz2TQjdwWLqasAGuEVBD"
+uri = "file://artifacts/sawaed-website/src/assets/images/equipment.jpg"
+type = "image"
+title = "heavy construction equipment, bulldozers and generators, yellow machinery against a clear blue sky"
+
+[[outputs]]
+id = "IFGxI3QNdhAWb2XwAttzP"
+uri = "file://artifacts/sawaed-website/src/assets/images/manpower.jpg"
+type = "image"
+title = "skilled construction workers in safety gear and hard hats on site"
+
+[[outputs]]
+id = "nyVmSMrWpGsdR9AVPmi1x"
+uri = "file://artifacts/sawaed-website/src/assets/images/catering.jpg"
+type = "image"
+title = "professional large scale catering setup for an industrial event"
+
+[[outputs]]
+id = "2_E3LS2xX69uRSY5oSXTt"
+uri = "file://artifacts/sawaed-website/src/assets/images/events.jpg"
+type = "image"
+title = "Elegant corporate event setup in a large venue"
+
+[[outputs]]
+id = "NfQu2vmPg20n5FhmeJpD2"
+uri = "file://artifacts/sawaed-website/src/assets/images/real-estate.jpg"
+type = "image"
+title = "modern, clean staff accommodation buildings for industrial workers"
+
+[[outputs]]
+id = "IJagATWYYR_N7WyKtijYr"
+uri = "file://artifacts/sawaed-website/src/assets/images/warehousing.jpg"
+type = "image"
+title = "massive modern warehouse facility interior, tall racks, clean organized space"
