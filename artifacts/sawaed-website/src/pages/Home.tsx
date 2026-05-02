@@ -34,29 +34,6 @@ import electricalWorkImg from "@/assets/images/electrical-work.png";
 import mechanicalWorkImg from "@/assets/images/mechanical-work.png";
 import steelStructureImg from "@/assets/images/steel-structure.png";
 
-import logoAramco from "@/assets/logos/aramco.svg";
-import logoEmaar from "@/assets/logos/emaar.svg";
-import logoSamsung from "@/assets/logos/samsung.svg";
-import logoHyundai from "@/assets/logos/hyundai.svg";
-import logoTekfen from "@/assets/logos/tekfen.svg";
-import logoHill from "@/assets/logos/hill-international.svg";
-import logoMammoet from "@/assets/logos/mammoet.svg";
-import logoPowerChina from "@/assets/logos/powerchina.svg";
-import logoSinohydro from "@/assets/logos/sinohydro.svg";
-import logoJohnsonControls from "@/assets/logos/johnson-controls.svg";
-import logoPfizer from "@/assets/logos/pfizer.svg";
-import logoSanofi from "@/assets/logos/sanofi.svg";
-import logoElsewedy from "@/assets/logos/elsewedy.svg";
-import logoSSI from "@/assets/logos/ssi-schafer.svg";
-import logoEFS from "@/assets/logos/efs.svg";
-import logoInitial from "@/assets/logos/initial.svg";
-import logoDallah from "@/assets/logos/dallah.svg";
-import logoAlSaif from "@/assets/logos/alsaif.svg";
-import logoGAMA from "@/assets/logos/gama.svg";
-import logoSWVL from "@/assets/logos/swvl.svg";
-import logoCCCC from "@/assets/logos/cccc.svg";
-import logoMCC from "@/assets/logos/mcc.svg";
-import logoSaudiElec from "@/assets/logos/saudi-electricity.svg";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -441,42 +418,22 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">Our Clients</h2>
             <p className="text-gray-400 text-lg">Proud to serve industry-leading national and international companies across Saudi Arabia's most ambitious projects.</p>
           </motion.div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-px bg-white/10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-px bg-white/10">
             {[
-              { name: "Saudi Aramco", logo: logoAramco },
-              { name: "Emaar", logo: logoEmaar },
-              { name: "Samsung Engineering", logo: logoSamsung },
-              { name: "Hyundai E&C", logo: logoHyundai },
-              { name: "Tekfen Construction", logo: logoTekfen },
-              { name: "Hill International", logo: logoHill },
-              { name: "Mammoet", logo: logoMammoet },
-              { name: "PowerChina", logo: logoPowerChina },
-              { name: "Sinohydro", logo: logoSinohydro },
-              { name: "Johnson Controls", logo: logoJohnsonControls },
-              { name: "Pfizer", logo: logoPfizer },
-              { name: "Sanofi", logo: logoSanofi },
-              { name: "Elsewedy Electric", logo: logoElsewedy },
-              { name: "SSI Schäfer", logo: logoSSI },
-              { name: "EFS Facilities", logo: logoEFS },
-              { name: "Initial", logo: logoInitial },
-              { name: "Dallah", logo: logoDallah },
-              { name: "Al Saif Group", logo: logoAlSaif },
-              { name: "GAMA", logo: logoGAMA },
-              { name: "SWVL", logo: logoSWVL },
-              { name: "CCCC", logo: logoCCCC },
-              { name: "MCC", logo: logoMCC },
-              { name: "Saudi Electricity", logo: logoSaudiElec },
-            ].map((client) => (
+              "Saudi Aramco", "Emaar", "Samsung Engineering", "Hyundai E&C",
+              "Tekfen Construction", "Hill International", "Mammoet", "PowerChina",
+              "Sinohydro", "Johnson Controls", "Pfizer", "Sanofi",
+              "Elsewedy Electric", "SSI Schäfer", "EFS Facilities", "Initial",
+              "Dallah", "Al Saif Group", "GAMA", "SWVL",
+              "CCCC", "MCC", "Saudi Electricity Co.", "Hyundai",
+            ].map((name) => (
               <div
-                key={client.name}
-                className="bg-white flex items-center justify-center p-5 h-24 group hover:shadow-inner transition-all"
-                title={client.name}
+                key={name}
+                className="bg-white/5 border border-white/5 flex items-center justify-center px-4 py-5 h-16 hover:bg-white/10 transition-colors"
               >
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="max-h-10 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100"
-                />
+                <span className="text-sm font-bold text-white/70 hover:text-primary tracking-wide text-center transition-colors">
+                  {name}
+                </span>
               </div>
             ))}
           </div>
