@@ -1,6 +1,6 @@
 [build]
   base    = "."
-  command = "pnpm install --frozen-lockfile && pnpm --filter @workspace/sawaed-website run build:netlify"
+  command = "pnpm install --no-frozen-lockfile && pnpm --filter @workspace/sawaed-website run build:netlify"
   publish = "artifacts/sawaed-website/dist"
 
 [build.environment]

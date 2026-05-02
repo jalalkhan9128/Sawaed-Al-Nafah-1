@@ -1,0 +1,76 @@
+The Netlify deploy errored, with the following guidance provided:
+
+Relevant error lines
+- Failure during install step: [line 16](#L16)
+- pnpm install error about frozen lockfile: [line 19](#L19)
+- Lockfile mismatch details (removed workspace dep): [line 22](#L22)
+- Final failure: [line 24](#L24)
+
+Diagnosis
+- Error type: pnpm CI install failure (ERR_PNPM_OUTDATED_LOCKFILE).
+- Cause: The committed pnpm-lock.yaml is out of sync with the workspace package.json files. pnpm is running in "frozen-lockfile" mode in CI and detects that specifiers changed (it reports one removed dependency: @workspace/api-client-react). Netlify’s CI refuses to install when the lockfile is stale, so the build stops.
+
+Solution
+1) Verify workspace/package presence
+- Check that the workspace package referenced (or removed) is intended. Confirm the package exists in your workspace config or that you intentionally removed it from package.json in one of your workspace packages (for example in the artifact workspace referenced by the error).
+- If the package should exist, restore it in the appropriate package.json. If you intentionally removed/renamed it, proceed to update the lockfile.
+
+2) Update and commit the lockfile (recommended)
+- On your local machine, at the repository root run:
+```bash
+# (optional) ensure Corepack/pnpm version similar to CI:
+corepack enable
+corepack prepare pnpm@10.30.3 --activate
+
+# install/update lockfile for the workspace
+pnpm install
+# or, explicitly at workspace root:
+pnpm -w install
+
+# commit the updated lockfile
+git add pnpm-lock.yaml
+git commit -m "chore: update pnpm-lock.yaml"
+git push
+```
+- After pushing, Netlify CI will use the updated pnpm-lock.yaml and the frozen-lockfile check will pass.
+
+3) Temporary/workaround (not recommended long-term)
+- If you need an immediate deploy and cannot update the lockfile right now, change the build command in Netlify to run a non-frozen install (this bypasses CI safety):
+  - In Netlify UI → Site settings → Build & deploy → Build settings, set the build command to:
+  ```
+  pnpm install --no-frozen-lockfile && <your normal build command>
+  ```
+  - Or add a pre-build script in your repo that runs pnpm install --no-frozen-lockfile.
+- Note: This is a workaround; best practice is to update and commit the lockfile so CI remains deterministic.
+
+If you suspect Node version issues later, follow Netlify’s docs for changing Node versions: https://docs.netlify.com/configure-builds/manage-dependencies/#node-js-and-javascript
+
+The relevant error logs are:
+
+Line 0: build-image version: ac6eb13fbf000e5c09ad677efd8b7c3c2d0142b6 (noble-new-builds)
+Line 1: buildbot version: 1e1f172b82fc46a7a7b4b14d04d14163b44b9b01
+Line 2: Fetching cached dependencies
+Line 3: Failed to fetch cache, continuing with build
+Line 4: Starting to prepare the repo for build
+Line 5: No cached dependencies found. Cloning fresh repo
+Line 6: git clone --filter=blob:none https://github.com/jalalkhan9128/Sawaed-Al-Nafah-1
+Line 7: Preparing Git Reference refs/heads/main
+Line 8: Installing dependencies
+Line 9: mise ~/.config/mise/config.toml tools: python@3.14.3
+Line 10: mise ~/.config/mise/config.toml tools: ruby@3.4.8
+Line 11: mise ~/.config/mise/config.toml tools: go@1.26.2
+Line 12: v20.20.2 is already installed.
+Line 13: Now using node v20.20.2 (npm v10.8.2)
+Line 14: Enabling Node.js Corepack
+Line 15: pnpm workspaces detected
+Line 16: Failed during stage 'Install dependencies': dependency_installation script returned non-zero exit code: 1
+Line 17: Installing npm packages using pnpm version 10.30.3
+Line 18: Scope: all 9 workspace projects
+Line 19:  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/artifact
+Line 20: Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install 
+Line 21:   Failure reason:
+Line 22:   specifiers in the lockfile don't match specifiers in package.json:
+* 1 dependencies were removed: @workspace/api-client-react@
+Line 23: Error during pnpm install
+Line 24: Failing build: Failed to install dependencies
+Line 25: Finished processing build request in 5.042s
