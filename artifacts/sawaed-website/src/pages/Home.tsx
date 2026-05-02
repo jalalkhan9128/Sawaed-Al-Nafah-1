@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ceoPic from "@assets/WhatsApp_Image_2026-04-28_at_11.08.03_AM_1777732152121.jpeg";
+import companyLogo from "@assets/unlockkk_1777732245197.png";
 import { motion } from "framer-motion";
 import { 
   Building2, 
@@ -130,9 +131,12 @@ export default function Home() {
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md py-4" : "bg-transparent py-6"}`}>
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <div className="text-2xl font-serif font-bold text-secondary flex items-center gap-2 cursor-pointer" onClick={() => scrollTo("hero")} data-testid="link-logo">
-            <div className="w-8 h-8 bg-primary text-white flex items-center justify-center font-sans font-bold">S</div>
-            <span className={scrolled ? "text-secondary" : "text-white drop-shadow-md"}>Sawaed Al-Nafah</span>
+          <div className="flex items-center cursor-pointer" onClick={() => scrollTo("hero")} data-testid="link-logo">
+            <img
+              src={companyLogo}
+              alt="Sawaed Al-Nafah Logo"
+              className={`h-14 w-auto transition-all duration-300 ${scrolled ? "brightness-100" : "brightness-0 invert drop-shadow-lg"}`}
+            />
           </div>
           <div className={`hidden md:flex gap-8 font-medium text-sm tracking-wide ${scrolled ? "text-secondary" : "text-white drop-shadow-md"}`}>
             <button onClick={() => scrollTo("about")} className="hover:text-primary transition-colors" data-testid="link-nav-about">About</button>
@@ -470,8 +474,11 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="border-t border-white/10 mt-24 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Sawaed Al-Nafah. All rights reserved.</p>
+          <div className="border-t border-white/10 mt-24 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+            <div className="flex items-center gap-4">
+              <img src={companyLogo} alt="Sawaed Al-Nafah Logo" className="h-12 w-auto brightness-0 invert opacity-80" />
+              <p>&copy; {new Date().getFullYear()} Sawaed Al-Nafah. All rights reserved.</p>
+            </div>
             <p>www.sawaedalnafah.com</p>
           </div>
         </div>
