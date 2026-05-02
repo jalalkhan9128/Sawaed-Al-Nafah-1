@@ -22,13 +22,13 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import transportImg from "@/assets/images/transport.jpg";
-import equipmentImg from "@/assets/images/equipment.jpg";
-import manpowerImg from "@/assets/images/manpower.jpg";
-import cateringImg from "@/assets/images/catering.jpg";
-import eventsImg from "@/assets/images/events.jpg";
-import realEstateImg from "@/assets/images/real-estate.jpg";
-import warehousingImg from "@/assets/images/warehousing.jpg";
+import transportImg from "@/assets/images/transport.png";
+import equipmentImg from "@/assets/images/equipment.png";
+import manpowerImg from "@/assets/images/manpower.png";
+import cateringImg from "@/assets/images/catering.png";
+import eventsImg from "@/assets/images/events.png";
+import realEstateImg from "@/assets/images/real-estate.png";
+import warehousingImg from "@/assets/images/warehousing.png";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);

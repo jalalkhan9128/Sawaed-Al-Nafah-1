@@ -1,5 +1,46 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "WID4aEHaijyjgb8abK_B2"
+uri = "file://artifacts/sawaed-website/src/assets/images/equipment.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "AMq87u7pkn4M8ldFoR2pA"
+uri = "file://artifacts/sawaed-website/src/assets/images/manpower.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "xhuoGa_vvZmWkrnLerJTZ"
+uri = "file://artifacts/sawaed-website/src/assets/images/events.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "IPai6OrGs_BzJ6CR7s24P"
+uri = "file://artifacts/sawaed-website/src/assets/images/real-estate.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "KudxAVm3CPJqC23RX71LR"
+uri = "file://artifacts/sawaed-website/src/assets/images/warehousing.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "4KDIDNUxzELH8WZEMeKEC"
+uri = "file://artifacts/sawaed-website/src/assets/images/transport.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "7wIkyd7coY1Sh_k0zbPoJ"
+uri = "file://artifacts/sawaed-website/src/assets/images/catering.png"
+type = "image"
+title = "generated_image"
 
 [[outputs]]
 id = "kLwEs8V7yefCUXYtmOEt3"
