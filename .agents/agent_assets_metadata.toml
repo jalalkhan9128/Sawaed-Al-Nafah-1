@@ -42,6 +42,30 @@ uri = "file://artifacts/sawaed-website/src/assets/images/catering.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "novDus9SoiA2nF_r4yGys"
+uri = "file://artifacts/sawaed-website/src/assets/images/civil-work.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Hiu0ctmZvM4qPfYrs-hyc"
+uri = "file://artifacts/sawaed-website/src/assets/images/electrical-work.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "p5zkAKJwJP-6ROPX7ekZD"
+uri = "file://artifacts/sawaed-website/src/assets/images/mechanical-work.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "LusBR7O8S6lN423816nxH"
+uri = "file://artifacts/sawaed-website/src/assets/images/steel-structure.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "kLwEs8V7yefCUXYtmOEt3"
 uri = "file://artifacts/sawaed-website/src/assets/images/transport.jpg"

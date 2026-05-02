@@ -29,11 +29,17 @@ import cateringImg from "@/assets/images/catering.png";
 import eventsImg from "@/assets/images/events.png";
 import realEstateImg from "@/assets/images/real-estate.png";
 import warehousingImg from "@/assets/images/warehousing.png";
+import civilWorkImg from "@/assets/images/civil-work.png";
+import electricalWorkImg from "@/assets/images/electrical-work.png";
+import mechanicalWorkImg from "@/assets/images/mechanical-work.png";
+import steelStructureImg from "@/assets/images/steel-structure.png";
+import clientsImg from "@assets/Screenshot_126_1777733027908.png";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", service: "Transportation", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [testimonialIdx, setTestimonialIdx] = useState(0);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -127,10 +133,18 @@ export default function Home() {
   ];
 
   const constructionWork = [
-    { title: "Civil Work", desc: "Large-scale and small-scale civil engineering projects", icon: Building2 },
-    { title: "Electrical Work", desc: "Residential, commercial, and industrial sectors, compliance with industry standards", icon: Zap },
-    { title: "Mechanical Work", desc: "Installation, maintenance, and commissioning, compliance with industry standards", icon: Wrench },
-    { title: "Steel Structure Work", desc: "Fabrication, erection, and installation in accordance with international standards", icon: Hammer },
+    { title: "Civil Work", desc: "We have successfully executed a diverse portfolio of civil engineering projects across multiple sectors — including infrastructure, roads, foundations, and building structures at both large and small scale.", icon: Building2, img: civilWorkImg },
+    { title: "Electrical Work", desc: "We have delivered a wide range of electrical projects across residential, commercial, and industrial sectors. Our team has proven expertise executing work in full compliance with industry standards and safety codes.", icon: Zap, img: electricalWorkImg },
+    { title: "Mechanical Work", desc: "We have successfully delivered mechanical works including installation, maintenance, and commissioning. Our team executes mechanical projects in full compliance with industry standards and international codes.", icon: Wrench, img: mechanicalWorkImg },
+    { title: "Steel Structure Work", desc: "We have delivered steel structure projects including fabrication, erection, and installation. Our team executes steel structure work in accordance with international standards, ensuring precision and structural integrity.", icon: Hammer, img: steelStructureImg },
+  ];
+
+  const testimonials = [
+    { name: "Project Manager", company: "Samsung Engineering", quote: "Sawaed Al-Nafah provided exceptional manpower and logistics support for our facility project in KAEC. Their team was punctual, professional, and exceeded our expectations on every milestone." },
+    { name: "Operations Director", company: "Saudi Aramco", quote: "We rely on Sawaed Al-Nafah for transportation and equipment rental across our project sites. Their fleet is modern, GPS-tracked, and always delivered on time. A truly dependable partner." },
+    { name: "Site Director", company: "Emaar", quote: "From warehousing to manpower supply, Sawaed Al-Nafah has been an integral part of our operations. Their one-stop solution saves us significant time and procurement overhead on every project." },
+    { name: "Construction Lead", company: "Tekfen Construction", quote: "The civil and steel structure work Sawaed Al-Nafah delivered met international quality standards. Their team is skilled, safety-conscious, and always brought solutions to the table." },
+    { name: "Facilities Manager", company: "Hyundai E&C", quote: "Sawaed Al-Nafah's catering services for our site camps are consistently excellent — hygienic, timely, and tailored to our workforce. We've renewed with them every project cycle." },
   ];
 
   const achievements = [
@@ -334,11 +348,21 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors"
+                  className="bg-white/5 border border-white/10 overflow-hidden group hover:bg-white/10 transition-colors"
                 >
-                  <work.icon size={32} className="text-primary mb-6" />
-                  <h3 className="text-xl font-bold mb-3 font-serif">{work.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{work.desc}</p>
+                  <div className="h-44 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-secondary/40 group-hover:bg-secondary/20 transition-colors z-10" />
+                    <img src={work.img} alt={work.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute bottom-3 left-3 z-20">
+                      <div className="w-9 h-9 bg-primary flex items-center justify-center">
+                        <work.icon size={18} className="text-white" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-3 font-serif">{work.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{work.desc}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -376,6 +400,111 @@ export default function Home() {
                 <p className="text-secondary text-sm font-medium leading-relaxed">{achievement}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Clients */}
+      <section id="clients" className="py-24 bg-secondary text-white">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center max-w-3xl mx-auto mb-14"
+          >
+            <h4 className="text-primary font-bold tracking-widest uppercase mb-2">Trusted By</h4>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">Our Clients</h2>
+            <p className="text-gray-400 text-lg">Proud to serve industry-leading national and international companies across Saudi Arabia's most ambitious projects.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="rounded-lg overflow-hidden border border-white/10 shadow-2xl"
+          >
+            <img
+              src={clientsImg}
+              alt="Our Clients — Emaar, Saudi Aramco, Samsung Engineering, Hyundai, Tekfen, CCCC, Mammoet and more"
+              className="w-full h-auto object-contain bg-white"
+              data-testid="img-clients"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 bg-muted">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center max-w-3xl mx-auto mb-14"
+          >
+            <h4 className="text-primary font-bold tracking-widest uppercase mb-2">Client Feedback</h4>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-secondary mb-4">What Our Clients Say</h2>
+            <div className="w-24 h-1 bg-primary mx-auto"></div>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              key={testimonialIdx}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white p-10 shadow-lg border border-border relative"
+            >
+              <svg className="w-12 h-12 text-primary/20 mb-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              <p className="text-xl text-secondary leading-relaxed italic mb-8 font-serif">
+                "{testimonials[testimonialIdx].quote}"
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary flex items-center justify-center text-white font-bold font-serif text-lg">
+                  {testimonials[testimonialIdx].company[0]}
+                </div>
+                <div>
+                  <p className="font-bold text-secondary">{testimonials[testimonialIdx].name}</p>
+                  <p className="text-sm text-primary font-medium">{testimonials[testimonialIdx].company}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <button
+                onClick={() => setTestimonialIdx(i => (i - 1 + testimonials.length) % testimonials.length)}
+                className="w-10 h-10 border-2 border-secondary/30 hover:border-primary hover:text-primary text-secondary flex items-center justify-center transition-colors"
+                data-testid="button-testimonial-prev"
+                aria-label="Previous testimonial"
+              >
+                <ChevronRight size={18} className="rotate-180" />
+              </button>
+              <div className="flex gap-2">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setTestimonialIdx(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${i === testimonialIdx ? "bg-primary" : "bg-secondary/20"}`}
+                    data-testid={`button-testimonial-dot-${i}`}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => setTestimonialIdx(i => (i + 1) % testimonials.length)}
+                className="w-10 h-10 border-2 border-secondary/30 hover:border-primary hover:text-primary text-secondary flex items-center justify-center transition-colors"
+                data-testid="button-testimonial-next"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
