@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ceoPic from "@assets/WhatsApp_Image_2026-04-28_at_11.08.03_AM_1777732152121.jpeg";
-import companyLogo from "@assets/unlockkk_1777732245197.png";
+import ceoPic from "@/assets/ceo-photo.jpeg";
+import companyLogo from "@/assets/company-logo.png";
 import { motion } from "framer-motion";
 import { 
   Building2, 
