@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ceoPic from "@assets/WhatsApp_Image_2026-04-28_at_11.08.03_AM_1777732152121.jpeg";
 import { motion } from "framer-motion";
 import { 
   Building2, 
@@ -367,9 +368,21 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <svg className="w-16 h-16 mx-auto text-primary mb-8 opacity-50" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
+              <div className="mb-8 flex justify-center">
+                <div className="relative">
+                  <img
+                    src={ceoPic}
+                    alt="Irfan Khan — CEO"
+                    data-testid="img-ceo"
+                    className="w-32 h-32 rounded-full object-cover object-top shadow-lg border-4 border-primary/30"
+                  />
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
               <p className="text-2xl md:text-3xl font-serif text-secondary leading-relaxed mb-8 italic">
                 "As the Chief Executive Officer, I am deeply committed to leading our company with integrity, innovation, and a clear vision for sustainable growth. Our mission is to deliver exceptional value... We believe that success is built on trust, teamwork, and a relentless pursuit of excellence."
               </p>
