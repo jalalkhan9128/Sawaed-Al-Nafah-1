@@ -32,6 +32,24 @@ import warehousingImg from "@/assets/images/warehousing.png";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", service: "Transportation", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Inquiry from ${form.name} — ${form.service}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nService of Interest: ${form.service}\n\nMessage:\n${form.message}`
+    );
+    window.open(`mailto:irfank1437@gmail.com?subject=${subject}&body=${body}`, "_blank");
+    setSubmitted(true);
+    setForm({ name: "", email: "", service: "Transportation", message: "" });
+    setTimeout(() => setSubmitted(false), 5000);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -425,7 +443,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email Us</p>
-                    <p className="text-lg font-medium">sawaedalnafah@outlook.com</p>
+                    <p className="text-lg font-medium">irfan@sawaedalnafah.com</p>
                   </div>
                 </div>
                 
@@ -444,33 +462,45 @@ export default function Home() {
             
             <div className="bg-white p-8 text-secondary">
               <h3 className="text-2xl font-serif font-bold mb-6">Send an Inquiry</h3>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Name</label>
-                  <input type="text" className="w-full border border-border p-3 focus:outline-none focus:border-primary" placeholder="Your Name" data-testid="input-name" />
+              {submitted ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center gap-4" data-testid="form-success">
+                  <CheckCircle2 className="text-primary" size={48} />
+                  <p className="text-xl font-bold text-secondary">Inquiry Sent!</p>
+                  <p className="text-muted-foreground text-sm">Your email client has opened with your message pre-filled. Please send it to complete your inquiry.</p>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <input type="email" className="w-full border border-border p-3 focus:outline-none focus:border-primary" placeholder="Your Email" data-testid="input-email" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Service of Interest</label>
-                  <select className="w-full border border-border p-3 focus:outline-none focus:border-primary" data-testid="select-service">
-                    <option>Transportation</option>
-                    <option>Equipment Rental</option>
-                    <option>Manpower Supply</option>
-                    <option>Construction Works</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <textarea className="w-full border border-border p-3 h-32 focus:outline-none focus:border-primary" placeholder="Project details..." data-testid="input-message"></textarea>
-                </div>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white py-6 rounded-none text-lg" data-testid="button-submit-inquiry">
-                  Submit Inquiry
-                </Button>
-              </form>
+              ) : (
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Name</label>
+                    <input required type="text" name="name" value={form.name} onChange={handleFormChange} className="w-full border border-border p-3 focus:outline-none focus:border-primary" placeholder="Your Name" data-testid="input-name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Email</label>
+                    <input required type="email" name="email" value={form.email} onChange={handleFormChange} className="w-full border border-border p-3 focus:outline-none focus:border-primary" placeholder="Your Email" data-testid="input-email" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Service of Interest</label>
+                    <select name="service" value={form.service} onChange={handleFormChange} className="w-full border border-border p-3 focus:outline-none focus:border-primary" data-testid="select-service">
+                      <option>Transportation</option>
+                      <option>Equipment Rental</option>
+                      <option>Manpower Supply</option>
+                      <option>Construction Works</option>
+                      <option>Catering Services</option>
+                      <option>Event Organizing</option>
+                      <option>Real Estate Rentals</option>
+                      <option>Warehousing Solutions</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Message</label>
+                    <textarea required name="message" value={form.message} onChange={handleFormChange} className="w-full border border-border p-3 h-32 focus:outline-none focus:border-primary" placeholder="Project details..." data-testid="input-message"></textarea>
+                  </div>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white py-6 rounded-none text-lg" data-testid="button-submit-inquiry">
+                    Submit Inquiry
+                  </Button>
+                </form>
+              )}
             </div>
           </div>
           
